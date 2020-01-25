@@ -17,7 +17,7 @@ mkdir -p "${HERE}/dev/devpath"
 pushd "${HERE}/dev"
 
 if [ ! -d "${MODULE}" ]; then
-  git clone "https://github.com/${REPO}/${MODULE}.git"
+  git clone "git@github.com:${REPO}/${MODULE}.git"
   ln -s `readlink -f "${MODULE}/${IMPORT}"` "devpath/${IMPORT}"
 fi
 
