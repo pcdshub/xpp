@@ -1,0 +1,20 @@
+x_bottom_left:
+  active: true
+  history:
+    10 Feb 2021 17:38:25: '   93.4844'
+  value: 93.484375
+x_bottom_right:
+  active: true
+  history:
+    10 Feb 2021 17:38:25: '   98.7096'
+  value: 98.7095703125
+x_top_left:
+  active: true
+  history:
+    10 Feb 2021 17:38:25: '   93.5470'
+  value: 93.546953125
+x_top_right:
+  active: true
+  history:
+    10 Feb 2021 17:38:25: '   98.7721'
+  value: 98.772109375

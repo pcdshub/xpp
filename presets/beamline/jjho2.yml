@@ -1,0 +1,26 @@
+geom2_0:
+  active: true
+  history:
+    12 Dec 2022 17:24:16: '    0.0300'
+  value: 0.029999781250000003
+geom2_1:
+  active: true
+  history:
+    12 Dec 2022 17:28:04: '    0.2800'
+  value: 0.27999928125
+geom2_n1:
+  active: true
+  history:
+    12 Dec 2022 17:20:46: '   -0.2400'
+  value: -0.24000023437499998
+order_1:
+  active: true
+  history:
+    11 Dec 2022 11:25:45: '    0.2700'
+    11 Dec 2022 11:40:31: '    0.1650'
+  value: 0.16499681249999998
+order_n1:
+  active: true
+  history:
+    11 Dec 2022 12:23:15: '   -0.1650'
+  value: -0.16500078125

@@ -1,0 +1,22 @@
+epix:
+  active: true
+  history:
+    19 Sep 2020 10:20:52: '   40.0000'
+  value: 40.0
+jungfrau:
+  active: true
+  history:
+    18 Sep 2020 16:20:35: '   -7.0000'
+    19 Sep 2020 09:41:36: '  -32.4000'
+  value: -32.4
+jungfrau2:
+  active: true
+  history:
+    21 Sep 2020 11:15:38: '  -36.9000'
+  value: -36.9
+out:
+  active: true
+  history:
+    19 Sep 2020 10:24:15: ' -110.0000'
+    20 Sep 2020 08:58:01: ' -110.0000'
+  value: -110.0

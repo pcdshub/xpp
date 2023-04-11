@@ -1,0 +1,22 @@
+LW39_zyla:
+  active: true
+  history:
+    02 Jun 2022 16:41:10: '    0.9200'
+    05 Jun 2022 11:35:11: '   -0.9050'
+  value: -0.9050000000000002
+LX_92_zyla:
+  active: true
+  history:
+    14 May 2022 14:56:56: '    0.0000'
+    14 May 2022 21:07:29: '    0.4000'
+  value: 0.39999999999999947
+peculiar_pos:
+  active: true
+  history:
+    31 Jul 2022 14:09:13: '   -2.8500'
+  value: -2.85
+zyla:
+  active: true
+  history:
+    05 Jun 2022 12:29:52: '   -0.9050'
+  value: -0.9050000000000002

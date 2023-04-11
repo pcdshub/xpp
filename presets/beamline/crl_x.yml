@@ -1,0 +1,58 @@
+LX92_0_rder:
+  active: true
+  history:
+    10 Dec 2022 14:31:49: '  -29.6850'
+  value: -29.685
+LX92_clear:
+  active: true
+  history:
+    10 Dec 2022 13:44:51: '  -44.0000'
+  value: -44.0
+LX92_direct_beam:
+  active: true
+  history:
+    10 Dec 2022 10:02:14: '  -40.0000'
+    11 Dec 2022 09:44:13: '  -29.2240'
+  value: -29.224
+LX92_direct_beam_YAG:
+  active: true
+  history:
+    10 Dec 2022 10:02:24: '  -40.0000'
+  value: -40.0
+LX92_geom1_YAG:
+  active: true
+  history:
+    11 Dec 2022 14:07:27: '  -20.4000'
+  value: -20.4
+LX92_geom1_clear:
+  active: true
+  history:
+    11 Dec 2022 14:06:26: '  -25.4000'
+  value: -25.4
+LX92_geom1_focus:
+  active: true
+  history:
+    11 Dec 2022 15:12:55: '  -11.5800'
+  value: -11.58
+LX92_geom2_focus:
+  active: true
+  history:
+    12 Dec 2022 08:03:44: '  -46.8620'
+    12 Dec 2022 14:16:31: '  -46.8720'
+  value: -46.872
+LX92_geom2_focus_1:
+  active: true
+  history:
+    12 Dec 2022 17:37:02: '  -46.8020'
+    12 Dec 2022 17:38:49: '  -46.7720'
+  value: -46.772
+LX92_geom2_focus_n1:
+  active: true
+  history:
+    12 Dec 2022 17:32:25: '  -46.9470'
+  value: -46.947
+pack2:
+  active: true
+  history:
+    11 Nov 2022 13:39:08: '   -0.2183'
+  value: -0.2182724609375002

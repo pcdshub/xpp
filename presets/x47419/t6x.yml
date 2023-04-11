@@ -1,0 +1,10 @@
+in:
+  active: true
+  history:
+    01 Jul 2021 11:36:47: '    3.6000'
+  value: 3.6
+out:
+  active: true
+  history:
+    01 Jul 2021 11:36:55: '    5.0000'
+  value: 5

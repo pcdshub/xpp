@@ -1,0 +1,16 @@
+LX49:
+  active: true
+  history:
+    23 Oct 2021 19:52:52: '   36.4224'
+    24 Oct 2021 19:03:26: '   36.4224'
+  value: 36.42236328125
+LX49_day4:
+  active: true
+  history:
+    26 Oct 2021 19:31:16: '   17.1719'
+  value: 17.171875
+LX49_zn150:
+  active: true
+  history:
+    24 Oct 2021 17:51:08: '   36.4419'
+  value: 36.44189453125

@@ -1,0 +1,11 @@
+block_vcc:
+  active: true
+  history:
+    09 Nov 2020 23:45:51: '   39.0000'
+  value: 39.00000000000001
+kapton:
+  active: true
+  history:
+    09 Nov 2020 21:26:41: '   29.0000'
+    09 Nov 2020 23:41:12: '   27.0000'
+  value: 27.000000000000007

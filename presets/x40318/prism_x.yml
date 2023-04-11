@@ -1,0 +1,11 @@
+in:
+  active: true
+  history:
+    18 Dec 2020 06:29:36: '   12.4000'
+    19 Dec 2020 09:16:21: '    8.7000'
+  value: 8.7
+out:
+  active: true
+  history:
+    18 Dec 2020 06:30:06: '    0.0000'
+  value: 0.0

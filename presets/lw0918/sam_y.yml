@@ -1,0 +1,26 @@
+hcg:
+  active: true
+  history:
+    18 Sep 2020 18:55:26: '    1.9000'
+  value: 1.9000000000000001
+ronchi:
+  active: true
+  history:
+    18 Sep 2020 11:46:29: '   -1.7761'
+  value: -1.7760742187499998
+rs3:
+  active: true
+  history:
+    18 Sep 2020 10:59:52: '    1.7239'
+  value: 1.7239257812500002
+rs4:
+  active: true
+  history:
+    18 Sep 2020 11:00:16: '    5.7239'
+  value: 5.72392578125
+yag:
+  active: true
+  history:
+    18 Sep 2020 10:59:20: '    1.7239'
+    19 Sep 2020 13:13:21: '    1.8739'
+  value: 1.87392578125

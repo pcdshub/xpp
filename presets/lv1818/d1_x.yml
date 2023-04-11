@@ -1,0 +1,21 @@
+block_cc:
+  active: true
+  history:
+    10 Nov 2020 00:40:48: '  -36.0000'
+    10 Nov 2020 00:42:17: '  -42.0000'
+  value: -42.0
+block_vcc:
+  active: true
+  history:
+    08 Nov 2020 23:05:08: '  -17.0000'
+  value: -17.0
+kapton:
+  active: true
+  history:
+    08 Nov 2020 22:18:46: '  -48.0000'
+  value: -48.00000000000001
+tape:
+  active: true
+  history:
+    09 Nov 2020 21:25:47: '  -36.0000'
+  value: -36
