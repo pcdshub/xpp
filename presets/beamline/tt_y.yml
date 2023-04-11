@@ -1,0 +1,93 @@
+CeMgYAG20um:
+  active: true
+  history:
+    30 Oct 2022 15:49:37: '   43.3618'
+  value: 43.36181640625
+FrostedYAG:
+  active: true
+  history:
+    14 Dec 2021 08:52:07: '   76.9995'
+    19 Jan 2022 15:59:45: '   76.9995'
+  value: 76.99951171875
+FrostedYAG_CCM:
+  active: true
+  history:
+    19 Jan 2022 16:00:18: '   84.4995'
+  value: 84.49951171875
+LuAG20um:
+  active: true
+  history:
+    19 Jan 2022 16:07:51: '   54.3530'
+  value: 54.35302734375
+LuAG20um_CCM:
+  active: true
+  history:
+    19 Jan 2022 16:08:06: '   61.8555'
+  value: 61.85546875
+Partial_LuAG_CCM_LY25:
+  active: true
+  history:
+    04 Aug 2022 05:47:51: '   41.4209'
+  value: 41.4208984375
+Sapp20um:
+  active: true
+  history:
+    19 Jan 2022 16:08:46: '   22.3169'
+  value: 22.31689453125
+Sapp20um_CCM:
+  active: true
+  history:
+    19 Jan 2022 16:08:58: '   29.8169'
+  value: 29.81689453125
+SiN3p5um:
+  active: true
+  history:
+    19 Jan 2022 16:09:54: '   43.3521'
+  value: 43.35205078125
+Ti:
+  active: true
+  history:
+    19 Jan 2022 16:13:45: '    4.9951'
+  value: 4.9951171875
+YAG20um:
+  active: true
+  history:
+    02 Jun 2022 12:01:14: '   65.3613'
+    14 Dec 2021 08:52:27: '   65.3613'
+    19 Jan 2022 16:02:16: '   65.3613'
+  value: 65.361328125
+YAG20um_CCM:
+  active: true
+  history:
+    19 Jan 2022 16:02:36: '   72.8613'
+  value: 72.861328125
+ZnS500um:
+  active: true
+  history:
+    19 Jan 2022 16:12:48: '   45.3320'
+  value: 45.33203125
+miniLuAG20um:
+  active: true
+  history:
+    19 Jan 2022 16:11:52: '   34.3213'
+  value: 34.3212890625
+partial_LuAG:
+  active: true
+  history:
+    18 May 2022 19:15:21: '   31.7236'
+    29 Jun 2022 18:57:30: '   36.8164'
+    29 Jun 2022 22:17:47: '   32.7271'
+  value: 32.72705078125
+partial_LuAG_ccm:
+  active: true
+  history:
+    08 Jul 2022 08:23:45: '   40.2710'
+  value: 40.27099609375
+ref_laser:
+  active: true
+  history:
+    13 May 2022 13:09:45: '   12.5537'
+    18 May 2022 19:04:55: '    7.5513'
+    19 Jan 2022 15:57:15: '    9.1528'
+    26 Nov 2022 17:29:20: '    9.1431'
+  value: 9.14306640625

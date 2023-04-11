@@ -1,0 +1,16 @@
+sample:
+  active: true
+  history:
+    13 Nov 2021 21:17:50: '   10.4218'
+  value: 10.421806640625
+sample_sunday:
+  active: true
+  history:
+    14 Nov 2021 21:25:40: '   10.4618'
+    14 Nov 2021 21:29:00: '   10.4618'
+  value: 10.461806640625
+test:
+  active: true
+  history:
+    14 Nov 2021 21:28:37: '   10.4618'
+  value: 10.461806640625

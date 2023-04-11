@@ -1,0 +1,40 @@
+LX92_direct_beam:
+  active: true
+  history:
+    11 Dec 2022 09:44:09: '    0.3770'
+  value: 0.3769999999999998
+LX92_gem2_focus:
+  active: true
+  history:
+    12 Dec 2022 08:04:02: '    0.0290'
+  value: 0.028999999999999915
+LX92_geom2_focus:
+  active: true
+  history:
+    12 Dec 2022 14:16:35: '    0.0230'
+  value: 0.023000000000000576
+pack1:
+  active: true
+  history:
+    18 Nov 2022 20:00:42: '    9.3691'
+  value: 9.369140625
+pack2:
+  active: true
+  history:
+    11 Nov 2022 13:39:04: '   36.2661'
+  value: 36.26611328125
+pack_2_lx91:
+  active: true
+  history:
+    04 Dec 2022 02:09:02: '   36.2515'
+  value: 36.25146484375
+pack_3_lx91:
+  active: true
+  history:
+    04 Dec 2022 21:19:20: '   62.9214'
+  value: 62.92138671875
+pack_3_lx91_2:
+  active: true
+  history:
+    08 Dec 2022 10:06:27: '   62.9214'
+  value: 62.92138671875

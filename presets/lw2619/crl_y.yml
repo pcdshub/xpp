@@ -1,0 +1,28 @@
+lw26_pack1_ccm:
+  active: true
+  history:
+    11 Aug 2021 11:44:47: '   17.2231'
+  value: 17.22314453125
+lw26_pack1_ccm_here:
+  active: true
+  history:
+    11 Aug 2021 11:45:18: '   17.2231'
+    11 Aug 2021 11:47:55: '   43.9248'
+    11 Aug 2021 11:51:05: '   17.2231'
+  value: 17.22314453125
+lw26_pack1_ccm_shift_2:
+  active: true
+  history:
+    13 Aug 2021 09:38:56: '   17.2134'
+  value: 17.21337890625
+lw26_pack2_ccm_here:
+  active: true
+  history:
+    11 Aug 2021 11:47:47: '   43.9248'
+    11 Aug 2021 11:48:01: '   43.9248'
+  value: 43.9248046875
+lw26_pack3_ccm_here:
+  active: true
+  history:
+    11 Aug 2021 12:02:47: '   70.5996'
+  value: 70.599609375

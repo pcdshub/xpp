@@ -1,0 +1,15 @@
+YAG_sample:
+  active: true
+  history:
+    31 Oct 2022 11:17:43: '   -3.4816'
+  value: -3.4816308593750005
+YAG_sample2:
+  active: true
+  history:
+    31 Oct 2022 11:55:47: '   -4.4916'
+  value: -4.491630859375
+sample:
+  active: true
+  history:
+    31 Oct 2022 13:44:04: '   -0.5916'
+  value: -0.5916308593749999

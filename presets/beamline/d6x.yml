@@ -1,0 +1,11 @@
+YAG:
+  active: true
+  history:
+    02 Jun 2022 11:47:48: '   24.0000'
+    29 Jun 2022 15:22:34: '    0.0000'
+  value: 0.0
+diode_in:
+  active: true
+  history:
+    02 Jun 2022 11:48:36: '   24.0000'
+  value: 24.0

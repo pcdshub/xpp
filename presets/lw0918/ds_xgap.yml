@@ -1,0 +1,16 @@
+closed:
+  active: true
+  history:
+    19 Sep 2020 12:11:10: '    0.1600'
+    19 Sep 2020 12:20:03: '    0.1500'
+  value: 0.15
+in:
+  active: true
+  history:
+    19 Sep 2020 12:08:06: '   -0.2600'
+  value: -0.26000471875
+open:
+  active: true
+  history:
+    20 Sep 2020 08:50:59: '    3.1500'
+  value: 3.1500008437499996

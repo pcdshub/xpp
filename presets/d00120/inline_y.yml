@@ -1,0 +1,16 @@
+in:
+  active: true
+  history:
+    16 Aug 2022 14:30:36: '   -4.0000'
+    17 Aug 2022 07:15:38: '   -5.0000'
+  value: -5.0
+out:
+  active: true
+  history:
+    16 Aug 2022 13:41:14: '    6.0018'
+  value: 6.001796875
+yag:
+  active: true
+  history:
+    18 Aug 2022 09:39:21: '   -5.1380'
+  value: -5.1379980468749995

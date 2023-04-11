@@ -1,0 +1,10 @@
+block_vcc:
+  active: true
+  history:
+    29 Nov 2020 11:18:36: '    6.0000'
+  value: 5.999999999999997
+vcc_through:
+  active: true
+  history:
+    29 Nov 2020 11:18:09: '    2.0000'
+  value: 1.999999999999997

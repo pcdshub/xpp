@@ -1,0 +1,25 @@
+LX92_direct_beam:
+  active: true
+  history:
+    11 Dec 2022 09:08:02: '  -43.5407'
+  value: -43.54072265625
+LX92_geom1_silica:
+  active: true
+  history:
+    11 Dec 2022 14:17:59: '   30.7747'
+  value: 30.774726562500007
+LX92_geom1_zyla:
+  active: true
+  history:
+    11 Dec 2022 14:16:18: '  -25.9400'
+  value: -25.939999999999994
+LX92_geom2_zyla:
+  active: true
+  history:
+    12 Dec 2022 08:04:34: '  -31.0000'
+  value: -30.999999999999996
+LX92_silica:
+  active: true
+  history:
+    11 Dec 2022 10:07:53: '   15.4593'
+  value: 15.459277343750006

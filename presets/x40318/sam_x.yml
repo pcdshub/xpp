@@ -1,0 +1,10 @@
+sample_new:
+  active: true
+  history:
+    19 Dec 2020 04:20:10: '   65.9000'
+  value: 65.9
+silica:
+  active: true
+  history:
+    27 Nov 2020 11:46:20: '   66.2000'
+  value: 66.2

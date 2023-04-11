@@ -1,110 +1,135 @@
 from ophyd import (Device, EpicsSignal, EpicsSignalRO, Component as Cpt,
                    FormattedComponent as FCpt)
-from ophyd.signal import AttributeSignal
+from ophyd.signal import AttributeSignal, Signal
 
 import pcdsdevices.device_types
 from pcdsdevices.inout import InOutPositioner
 from subprocess import check_output
+
+
 import time
 
-#class MpodChannel(Device):
-#    voltage = Cpt(EpicsSignal, ':GetVoltageMeasurement', write_pv = ':SetVoltage', kind='normal')
-#    current = Cpt(EpicsSignalRO, ':GetCurrentMeasurement', kind='normal')
-#    state = Cpt(EpicsSignal, ':GetSwitch', write_pv = ':SetSwitch', kind='normal')
-#    #0 means no EPICS high limit.
-#    voltage_highlimit =  Cpt(EpicsSignal, ':SetVoltage.DRVH', kind='normal')
 
-class LaserShutter(InOutPositioner):
-    """Controls shutter controlled by Analog Output"""
-    # EpicsSignals
-    voltage = Cpt(EpicsSignal, '')
-    state = FCpt(AttributeSignal, 'voltage_check')
-    # Constants
-    out_voltage = 4.5
-    in_voltage = 0.0
-    barrier_voltage = 1.4
 
-    @property
-    def voltage_check(self):
-        """Return the position we believe shutter based on the channel"""
-        if self.voltage.get() >= self.barrier_voltage:
-            return 'OUT'
+class ShutterSequencerDoublePump():
+    """ Class to control double pump shutters and set according sequences 
+        
+    Workflow for shutter and sequence configurations:
+    1. Stop sequence (no event code are being fired)
+    2. Open / close shutters
+    3. Configure new sequence
+    4. Wait 0.03s to make sure shutters are in position
+    5. Start sequence
+    """
+    def __init__(
+        self, 
+        shutter1 = lp, 
+        shutter2 = ep, 
+        code1_on = 92, 
+        code1_off = 93, 
+        code2_on = 97, 
+        code2_off = 98
+        ):
+        """
+        Parameters
+        ----------
+        shutter1:   LaserShutter instance for pump 1
+        shutter2:   LaserShutter instance for pump 2
+        code1_on:   Event code for pump 1 on
+        code1_off:  Event code for pump 1 off
+        code2_on:   Event code for pump 2 on
+        code2_off:  Event code for pump 2 off
+        """
+        self.s1 = shutter1
+        self.s2 = shutter2
+        self.c1_on = code1_on
+        self.c1_off = code1_off
+        self.c2_on = code2_on
+        self.c2_off = code2_off
+        return
+
+    def __repr__(self):
+        if self.s1.inserted:
+            s1_status = 'Close'
         else:
-            return 'IN'
-
-    def _do_move(self, state):
-        """Override to just put to the channel"""
-        if state.name == 'IN':
-            self.voltage.put(self.in_voltage)
-        elif state.name == 'OUT':
-            self.voltage.put(self.out_voltage)
+            s1_status = 'Open'
+        if self.s2.inserted:
+            s2_status = 'Close'
         else:
-            raise ValueError("%s is in an invalid state", state)
+            s2_status = 'Open'
 
-#class LaserShutterMPD_switch(InOutPositioner):
-#    """Controls shutter controlled by Mpod"""
-#    # EpicsSignals
-#    voltage = Cpt(EpicsSignal, ':GetVoltageMeasurement', write_pv = ':SetVoltage', kind='normal')
-#    switch = Cpt(EpicsSignal, ':GetSwitch', write_pv = ':SetSwitch', kind='normal')
-#    #voltage = Cpt(EpicsSignal, '')
-#    state = FCpt(AttributeSignal, 'switch_check')
-#    # Constants
-#    set_voltage = 24.0
-#    out_voltage = 24.0
-#    in_voltage = 1.0
-#    barrier_voltage = 1.4
-#
-#    @property
-#    def voltage_check(self):
-#        """Return the position we believe shutter based on the channel"""
-#        if abs(self.voltage.get()-set_voltage)>1:
-#            print('Set voltage not 24, fixing it')
-#            self.voltage.put(set_voltage)
-#        if self.switch.get() >= 1:
-#            return 'OUT'
-#        else:
-#            return 'IN'
-#
-#    def _do_move(self, state):
-#        """Override to just put to the channel"""
-#        if state.name == 'IN':
-#            self.switch.put(0)
-#        elif state.name == 'OUT':
-#            self.switch.put(1)
-#        else:
-#            raise ValueError("%s is in an invalid state", state)
-#
-class LaserShutterMPD(InOutPositioner):
-    """Controls shutter controlled by Mpod"""
-    # EpicsSignals
-    voltage = Cpt(EpicsSignal, ':GetVoltageMeasurement', write_pv = ':SetVoltage', kind='normal')
-    switch = Cpt(EpicsSignal, ':GetSwitch', write_pv = ':SetSwitch', kind='normal')
-    #voltage = Cpt(EpicsSignal, '')
-    vstate = FCpt(AttributeSignal, 'voltage_check')
-    # Constants
-    out_voltage = 24.0
-    in_voltage = 1.0
-    barrier_voltage = 1.4
+        curr_seq = seq.sequence.get_seq()
+        s = ''
+        for el in curr_seq:
+            s+=f'{el}\n'
 
-    @property
-    def voltage_check(self):
-        """Return the position we believe shutter based on the channel"""
-        if self.switch.get()!=1:
-            print('Channel not on, fixing it')
-            self.switch.put(1)
-        if self.voltage.get() >= self.barrier_voltage:
-            return 'OUT'
-        else:
-            return 'IN'
+        r = f"""
+Pump 1 shutter: {s1_status}
+Pump 2 shutter: {s2_status}\n
+Sequence:
+{s}
+        """
+        return r
 
-    def _do_move(self, state):
-        """Override to just put to the channel"""
-        if state.name == 'IN':
-            self.voltage.put(self.in_voltage)
-        elif state.name == 'OUT':
-            self.voltage.put(self.out_voltage)
-        else:
-            raise ValueError("%s is in an invalid state", state)
+    def print_status(self):
+        print(self)
+
+    def l1_on_l2_on(self):
+        """ Both pumps on """
+        seq.stop()
+        self.s1('OUT')
+        self.s2('OUT')
+        shot_seq = []
+        shot_seq.append([self.c1_on, 1, 0, 0])
+        shot_seq.append([self.c2_on, 0, 0, 0])
+        seq.sequence.put_seq(shot_seq)
+        time.sleep(0.03)
+        self.print_status()
+        seq.start()
+        return
+
+    def l1_on_l2_off(self):
+        """ Pump 1 on, pump 2 off """
+        seq.stop()
+        self.s1('OUT')
+        self.s2('IN')
+        shot_seq = []
+        shot_seq.append([self.c1_on, 1, 0, 0])
+        shot_seq.append([self.c2_on, 0, 0, 0])
+        seq.sequence.put_seq(shot_seq)
+        time.sleep(0.03)
+        self.print_status()
+        seq.start()
+        return
+
+    def l1_off_l2_on(self):
+        """ Pump 1 off, pump 2 on """
+        seq.stop()
+        self.s1('IN')
+        self.s2('OUT')
+        shot_seq = []
+        shot_seq.append([self.c1_on, 1, 0, 0])
+        shot_seq.append([self.c2_on, 0, 0, 0])
+        seq.sequence.put_seq(shot_seq)
+        time.sleep(0.03)
+        self.print_status()
+        seq.start()
+        return
+
+    def l1_off_l2_off(self):
+        """ Both pump off """
+        seq.stop()
+        self.s1('IN')
+        self.s2('IN')
+        shot_seq = []
+        shot_seq.append([self.c1_off, 1, 0, 0])
+        shot_seq.append([self.c2_off, 0, 0, 0])
+        seq.sequence.put_seq(shot_seq)
+        time.sleep(0.03)
+        self.print_status()
+        seq.start()
+        return
+
 
 
 #class PPM_Record():
@@ -466,3 +491,85 @@ class ImagerHdf5():
 #                if self.imgstat.compute_centroid.get() == 'Yes':
 #                    print('profile threshold: ',self.imgstat.profile_threshold.get())
 #                    print('profile avergage: ',self.imgstat.profile_average.get())
+
+
+# Syringe pump setup
+from pcdsdevices.analog_signals import Acromag
+
+class Syringe_Pump():
+    def __init__(self):
+        self.signals = Acromag('XPP:USR', name='syringe_pump_channels')
+        self.base = self.signals.ao1_0
+        self.ttl = self.signals.ao1_1
+    def on(self):
+        ttl = self.ttl.get()
+        self.base.put(5)
+        if ttl == 5:
+            self.ttl.put(0)
+            print('Initialized and on')
+        if ttl == 0:
+            self.ttl.put(5)
+            sleep(1)
+            self.ttl.put(0)
+            print("Syringe pump is on")
+    def off(self):
+        ttl = self.ttl.get()
+        self.base.put(5)
+        if ttl == 0:
+            self.ttl.put(5)
+            sleep(1)
+            self.ttl.put(0)
+            print("Syringe pump is off")
+        if ttl == 5:
+            self.ttl.put(0)
+
+#RS-232 operation
+from telnetlib import Telnet
+import re
+
+class SyringePumpSerial():
+    status_dict = {
+        'I': 'Infusing',
+        'W': 'Withdrawing',
+        'S': 'Program Stopped',
+        'P': 'Program Paused',
+        'T': 'Timed Pause Phase',
+        'U': 'Waiting for Trigger',
+        'X': 'Purging',
+    }
+
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
+
+    def cmd(self, command):
+       print(self.send_command(command))
+
+    def send_command(self, command):
+        with Telnet(self.host,self.port) as t:
+            t.write(command.encode()+b'\r')
+            msg = t.read_some().decode('ascii')
+            regex = re.search('\x0200(\D)(.*)\x03', msg)
+            status = self.status_dict[regex.group(1)]
+            return f"""\
+Command:\t{command}
+Response:\t{regex.group(2)}
+Status:\t\t{status}
+"""
+
+    def run(self):
+        self.cmd('RUN')
+
+    def stop(self):
+        self.cmd('STP')
+
+    def __call__(self, command):
+        self.cmd(command)
+
+    def __repr__(self):
+        return self.send_command('')
+
+    def timed(self, seconds):
+        self.run()
+        sleep(seconds)
+        self.stop()

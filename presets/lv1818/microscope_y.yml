@@ -1,0 +1,15 @@
+beamstop:
+  active: true
+  history:
+    10 Nov 2020 05:04:11: '   -3.2500'
+  value: -3.2500346256
+microscope:
+  active: true
+  history:
+    08 Nov 2020 07:23:30: '  -19.0999'
+  value: -19.0999181232
+yag:
+  active: true
+  history:
+    05 Nov 2020 17:08:12: '  -10.0000'
+  value: -10.0000194048

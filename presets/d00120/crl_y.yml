@@ -1,0 +1,11 @@
+in:
+  active: true
+  history:
+    17 Aug 2022 09:53:55: '    1.5550'
+    18 Aug 2022 09:31:32: '    1.3865'
+  value: 1.3865039062499998
+out_semi:
+  active: true
+  history:
+    17 Aug 2022 10:06:58: '    1.5550'
+  value: 1.555
