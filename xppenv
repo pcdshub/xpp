@@ -3,8 +3,8 @@
 
 # edit this line only
 USE_LOCAL="1"
-#export CONDA_ENVNAME="pcds-5.4.2"
-export CONDA_ENVNAME="pcds-5.5.0"
+#export CONDA_ENVNAME="pcds-5.5.0"
+export CONDA_ENVNAME="pcds-5.7.2"
 
 export HUTCH="xpp"
 export LOCAL_BASE="/u1/xppopr/conda_envs"
@@ -29,7 +29,8 @@ if [ -f "${HERE}/dev/hutch-python/bin/hutch-python" ]; then
 fi
 
 export PYTHONPATH="${HERE}:${HERE}/dev/devpath:${HERE}/../common/dev/devpath"
-source pcdsdaq_lib_setup
+#source pcdsdaq_lib_setup
+source /cds/group/pcds/pyps/apps/dev/pcdsdaq/bin/pcdsdaq_lib_setup
 export CONDA_PROMPT_MODIFIER="(${HUTCH}-${CONDA_ENVNAME})"
 
 #export EPICS_HOST_ARCH="rhel7-x86_64" # fix for env var overwritten by pcds_conda REMOVE on 5.4.0
