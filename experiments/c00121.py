@@ -3,6 +3,7 @@ import numpy as np
 from ophyd import EpicsSignal
 from ophyd import EpicsSignalRO
 
+from pcdsdevices.beam_stats import BeamEnergyRequest, BeamEnergyRequestACRWait
 
 SET_WAIT = 2
 
@@ -19,3 +20,5 @@ class User():
     def __init__(self):
         self.energy_set = SettleSignal('XPP:USER:MCC:EPHOT:SET1', name='energy_set', settle_time=SET_WAIT)
         self.energy_ref = SettleSignal('XPP:USER:MCC:EPHOT:REF1', name='energy_ref')
+
+        self.acr_energy = BeamEnergyRequestACRWait(name='acr_energy', prefix='XPP', acr_status_suffix='AO805')
