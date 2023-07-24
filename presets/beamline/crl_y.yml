@@ -13,6 +13,17 @@ LX92_geom2_focus:
   history:
     12 Dec 2022 14:16:35: '    0.0230'
   value: 0.023000000000000576
+X10036_focused:
+  active: true
+  history:
+    17 Jul 2023 23:30:08: '    1.0850'
+  value: 1.085
+X10036_unfocused:
+  active: true
+  history:
+    17 Jul 2023 21:37:02: '    1.1250'
+    17 Jul 2023 23:30:12: '    1.0850'
+  value: 1.085
 pack1:
   active: true
   history:

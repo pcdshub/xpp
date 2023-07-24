@@ -5,7 +5,7 @@ from xpp.db import scan_pvs
 from pcdsdevices.lasers.shutters import LaserShutter
 from pcdsdevices.lasers.shutters import LaserFlipper
 from ophyd.sim import motor as fake_motor
-from pcdsdevices.epics_motor import SmarAct
+from pcdsdevices.epics_motor import SmarAct, EpicsMotorInterface
 
 
 scan_pvs.enable()
@@ -252,10 +252,13 @@ with safe_load('Create Aliases'):
     from xpp.db import xpp_lodcm as lom
     from xpp.db import xpp_ccm as ccm
 
+    yag1.state.in_states = ['YAG', 'DIODE']
+    yag2.state.in_states = ['YAG', 'DIODE']
+
 
 with safe_load('add pp motors'):
-    pp.x = IMS('XPP:SB2:MMS:28', name='pp_x')
-    pp.y = IMS('XPP:SB2:MMS:16', name='pp_y')
+    pp.x = EpicsMotorInterface('XPP:SB2:MMS:28', name='pp_x')
+    pp.y = EpicsMotorInterface('XPP:SB2:MMS:16', name='pp_y')
 
 with safe_load('add crl motors'):
     class crl():
@@ -378,7 +381,8 @@ with safe_load('add laser motor groups'):
             return fd_value
 
         def matlabPV_FB(feedbackvalue):#get and put timedelay signal
-            matPV = EpicsSignal('LAS:FS11:VIT:matlab:04')
+            #matPV = EpicsSignal('LAS:FS11:VIT:matlab:04')#for bay 1 laser
+            matPV = EpicsSignal('LAS:FS14:VIT:matlab:04')#for bay 4 laser
             org_matPV = matPV.get()#the matlab PV value before FB
             fbvalns = feedbackvalue * 1e+9#feedback value in ns
             fbinput = org_matPV + fbvalns#relative to absolute value
@@ -415,7 +419,9 @@ with safe_load('add laser motor groups'):
             ttipmcorr = np.corrcoef(ttdataall,ipm2values) 
             return ttipmcorr[0,1]
         def get_matlabPV_stat():#get timetool related signal
-            mp_stat = EpicsSignal('LAS:FS11:VIT:TT_DRIFT_ENABLE')
+            #mp_stat = EpicsSignal('LAS:FS11:VIT:TT_DRIFT_ENABLE')# for bay 1
+            mp_stat = EpicsSignal('LAS:FS14:VIT:TT_DRIFT_ENABLE')
+   
             mp_stat = mp_stat.get()
             return mp_stat
 
@@ -448,11 +454,18 @@ with safe_load('add laser motor groups'):
                     return 1
                 else:
                     return 0
-                          
+        
+        def s3_status():
+            s3stat = EpicsSignal('PPS:NEH1:1:S3INSUM')
+            s3stat = s3stat.get()
+            return s3stat# 0 is out, 4 is IN                  
         def timing_check():
-            tttime = EpicsSignal('LAS:FS11:VIT:FS_TGT_TIME')#target time
-            tttact = EpicsSignal('LAS:FS11:VIT:FS_CTR_TIME')#actual control time
-            tttphase = EpicsSignal('LAS:FS11:VIT:PHASE_LOCKED')#phase
+            #tttime = EpicsSignal('LAS:FS11:VIT:FS_TGT_TIME')#target time for bay 1
+            #tttact = EpicsSignal('LAS:FS11:VIT:FS_CTR_TIME')#actual control time for bay 1
+            #tttphase = EpicsSignal('LAS:FS11:VIT:PHASE_LOCKED')#phase for bay 1
+            tttime = EpicsSignal('LAS:FS14:VIT:FS_TGT_TIME')#target time for bay4
+            tttact = EpicsSignal('LAS:FS14:VIT:FS_CTR_TIME')#actual control time for bay 4
+            tttphase = EpicsSignal('LAS:FS14:VIT:PHASE_LOCKED')#phase for bay 4
             if(round(tttime.get(),1)==round(tttact.get(),1) and (tttphase.get() == 1)):
                 return 1 ## lxt is ok for the target position
             elif(round(tttime.get(),1)!=round(tttact.get(),1) or (tttphase.get() != 1)):
@@ -894,21 +907,21 @@ with safe_load('add laser motor groups'):
 
 
 ##################################################################################################
-with safe_load('create cryo scattering chamber object group'):
-    class csc():
-        th = IMS('XPP:USR:MMS:17', name='th')
-        x = IMS('XPP:USR:MMS:18', name='x')
-        y = IMS('XPP:USR:MMS:25', name='y')
-        z = IMS('XPP:USR:MMS:24', name='z')
-        rz = IMS('XPP:USR:MMS:20', name='rz')
-        rx = IMS('XPP:USR:MMS:19', name='rx')
-        pmx = IMS('XPP:USR:MMS:23', name='pmx')
-        pmy = IMS('XPP:USR:MMS:22', name='pmy')
-        pmz = IMS('XPP:USR:MMS:21', name='pmz')
-        pmrot = SmarAct('XPP:MCS2:01:m10', name='pmrot')
-        dx = PMC100('XPP:USR:MMC:05', name='dx')
-        dy = PMC100('XPP:USR:MMC:06', name='dy')
-        dz = PMC100('XPP:USR:MMC:04', name='dz')
+#with safe_load('create cryo scattering chamber object group'):
+    #class csc():
+        #th = IMS('XPP:USR:MMS:17', name='th')
+        #x = IMS('XPP:USR:MMS:18', name='x')
+        #y = IMS('XPP:USR:MMS:25', name='y')
+        #z = IMS('XPP:USR:MMS:24', name='z')
+        #rz = IMS('XPP:USR:MMS:20', name='rz')
+        #rx = IMS('XPP:USR:MMS:19', name='rx')
+        #pmx = IMS('XPP:USR:MMS:23', name='pmx')
+        #pmy = IMS('XPP:USR:MMS:22', name='pmy')
+        #pmz = IMS('XPP:USR:MMS:21', name='pmz')
+        #pmrot = SmarAct('XPP:MCS2:01:m10', name='pmrot')
+        #dx = PMC100('XPP:USR:MMC:05', name='dx')
+        #dy = PMC100('XPP:USR:MMC:06', name='dy')
+        #dz = PMC100('XPP:USR:MMC:04', name='dz')
 
 
 #from pcdsdevices.attenuator import FeeAtt
