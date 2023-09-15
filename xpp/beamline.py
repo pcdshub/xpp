@@ -176,8 +176,8 @@ with safe_load('FS11 & FS14 lxt & lxt_ttc'):
     xpp_txt.name = 'txt'
     
     # pick which is the default
-    #lxt = lxt_FS11
-    lxt = lxt_FS14
+    lxt = lxt_FS11
+    #lxt = lxt_FS14
 
     class LXTTTC(SyncAxis):
         lxt = OCpt(lxt)
@@ -273,8 +273,11 @@ class LIB_SmarAct(BaseInterface, Device):
     mirr_y = Cpt(SmarAct, ':01:m2', kind='normal')
     mirr_dy = Cpt(SmarAct, ':01:m3', kind='normal')
     mirr_dx = Cpt(SmarAct, ':01:m4', kind='normal')
-    mono_th = Cpt(SmarAct, ':01:m5', kind='normal')
-    mono_x = Cpt(SmarAct, ':01:m6', kind='normal')
+    #mono_th = Cpt(SmarAct, ':01:m5', kind='normal')
+    pr_th = Cpt(SmarAct, ':01:m5', kind='normal')
+    pr_x = Cpt(SmarAct, ':01:m6', kind='normal')
+    pr_y = Cpt(SmarAct, ':01:m7', kind='normal')
+    las_rot = Cpt(SmarAct, ':01:m10', kind='normal')
 
 class lu():#lib unit
     tab_component_names = True
@@ -336,7 +339,7 @@ with safe_load('add laser motor groups'):
         lxt_fast2 = xpp_lxt_fast2
 
         def tt_rough_FB(
-            ttamp_th = 0.04, 
+            ttamp_th = 0.02, 
             ipm2_th = 2000, 
             ttfwhmhigh = 220,
             ttfwhmlow = 100,
@@ -381,8 +384,8 @@ with safe_load('add laser motor groups'):
             return fd_value
 
         def matlabPV_FB(feedbackvalue):#get and put timedelay signal
-            #matPV = EpicsSignal('LAS:FS11:VIT:matlab:04')#for bay 1 laser
-            matPV = EpicsSignal('LAS:FS14:VIT:matlab:04')#for bay 4 laser
+            matPV = EpicsSignal('LAS:FS11:VIT:matlab:04')#for bay 1 laser
+            #matPV = EpicsSignal('LAS:FS14:VIT:matlab:04')#for bay 4 laser
             org_matPV = matPV.get()#the matlab PV value before FB
             fbvalns = feedbackvalue * 1e+9#feedback value in ns
             fbinput = org_matPV + fbvalns#relative to absolute value
@@ -419,8 +422,8 @@ with safe_load('add laser motor groups'):
             ttipmcorr = np.corrcoef(ttdataall,ipm2values) 
             return ttipmcorr[0,1]
         def get_matlabPV_stat():#get timetool related signal
-            #mp_stat = EpicsSignal('LAS:FS11:VIT:TT_DRIFT_ENABLE')# for bay 1
-            mp_stat = EpicsSignal('LAS:FS14:VIT:TT_DRIFT_ENABLE')
+            mp_stat = EpicsSignal('LAS:FS11:VIT:TT_DRIFT_ENABLE')# for bay 1
+            #mp_stat = EpicsSignal('LAS:FS14:VIT:TT_DRIFT_ENABLE')
    
             mp_stat = mp_stat.get()
             return mp_stat
@@ -460,18 +463,18 @@ with safe_load('add laser motor groups'):
             s3stat = s3stat.get()
             return s3stat# 0 is out, 4 is IN                  
         def timing_check():
-            #tttime = EpicsSignal('LAS:FS11:VIT:FS_TGT_TIME')#target time for bay 1
-            #tttact = EpicsSignal('LAS:FS11:VIT:FS_CTR_TIME')#actual control time for bay 1
-            #tttphase = EpicsSignal('LAS:FS11:VIT:PHASE_LOCKED')#phase for bay 1
-            tttime = EpicsSignal('LAS:FS14:VIT:FS_TGT_TIME')#target time for bay4
-            tttact = EpicsSignal('LAS:FS14:VIT:FS_CTR_TIME')#actual control time for bay 4
-            tttphase = EpicsSignal('LAS:FS14:VIT:PHASE_LOCKED')#phase for bay 4
+            tttime = EpicsSignal('LAS:FS11:VIT:FS_TGT_TIME')#target time for bay 1
+            tttact = EpicsSignal('LAS:FS11:VIT:FS_CTR_TIME')#actual control time for bay 1
+            tttphase = EpicsSignal('LAS:FS11:VIT:PHASE_LOCKED')#phase for bay 1
+            #tttime = EpicsSignal('LAS:FS14:VIT:FS_TGT_TIME')#target time for bay4
+            #tttact = EpicsSignal('LAS:FS14:VIT:FS_CTR_TIME')#actual control time for bay 4
+            #tttphase = EpicsSignal('LAS:FS14:VIT:PHASE_LOCKED')#phase for bay 4
             if(round(tttime.get(),1)==round(tttact.get(),1) and (tttphase.get() == 1)):
                 return 1 ## lxt is ok for the target position
             elif(round(tttime.get(),1)!=round(tttact.get(),1) or (tttphase.get() != 1)):
                 return 0
 
-        def tt_recover(scanrange = 5e-12,stepsize = -0.5e-12,direction = "p",testshot = 240):#For tt_signal recover in 10 ps
+        def tt_recover_dev(scanrange = 5e-12,stepsize = -0.5e-12,direction = "p",testshot = 240):#For tt_signal recover in 10 ps ##old verstion
             las.tt_y.umv(54.67)#LuAG to find tt signal
             originaldelay = lxt()
             if direction == "n":
@@ -506,6 +509,53 @@ with safe_load('add laser motor groups'):
                     else:
                         print("No feedback yet")
                     return
+                else:
+                    lxt.umvr(stepsize)
+                    time.sleep(0.5)
+                    print(f"searching timetool signal {lxt()}")
+                j = j + 1          
+            print("The script cannot find the timetool signal in this range. Try las.autott_find()")        
+          
+        
+            return
+
+        def tt_recover(scanrange = 5e-12,stepsize = 0.5e-12,direction = "p",testshot = 240):#For tt_signal recover in 10 ps, now search tt signal baserd on the correlation 
+            #las.tt_y.umv(54.67)#LuAG to find tt signal
+            originaldelay = lxt()
+            if(las.get_correlation(testshot) < 0):
+                direction = "p"
+                print("Search tt signal from negative to positve")
+                time.sleep(0.5)
+            else:
+                print("Search tt signal from positive to negative")
+                stepsize = -1 * stepsize
+                time.sleep(0.5)
+            j = 0
+            while(1):
+                ttdata = np.zeros([testshot,])
+                ii = 0
+                for ii in range(testshot):
+                    current_tt, ttamp, ipm2val, ttfwhm,ttintg = las.get_ttall()#get 240 shots to find timetool signal
+                    if (ttamp > 0.03)and(ttfwhm < 130)and(ttfwhm >  70)and(ttamp<2):
+                        ttdata[ii,] = ttamp
+                    time.sleep(0.008)
+                print(ttdata)
+                if np.count_nonzero(ttdata[:,]) > 30:#1/4 shots have timetool signal
+                    print("Found timetool signal and set current lxt to 0")
+                    print(f"we will reset the current {lxt()} position to 0")
+                    lxt.set_current_position(0)
+                    #las.tt_y.umv(67.1777)#Switch to YAG
+                    print("Please run las.tt_rough_FB()")
+                    ttfb = input("Turn on feedback? yes(y) or No 'any other' ")
+                    if ((ttfb == "yes") or (ttfb == "y")):
+                        print("feedback on")
+                        las.tt_rough_FB(kp= 0.2,ki=0.1)
+                        
+                    else:
+                        print("No feedback yet")
+                    return
+                elif j > 20:#################
+                    break
                 else:
                     lxt.umvr(stepsize)
                     time.sleep(0.5)

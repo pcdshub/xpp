@@ -14,6 +14,16 @@ FrostedYAG_CCM:
   history:
     19 Jan 2022 16:00:18: '   84.4995'
   value: 84.49951171875
+GAGG:
+  active: true
+  history:
+    31 Jul 2023 08:51:23: '   47.3524'
+  value: 47.352421875000005
+GAGG20um:
+  active: true
+  history:
+    28 Jul 2023 22:50:55: '   48.3569'
+  value: 48.35693359375
 LuAG20um:
   active: true
   history:
@@ -24,6 +34,11 @@ LuAG20um_CCM:
   history:
     19 Jan 2022 16:08:06: '   61.8555'
   value: 61.85546875
+LuAG_partial:
+  active: true
+  history:
+    21 Aug 2023 01:12:02: '   33.5512'
+  value: 33.551152343750005
 Partial_LuAG_CCM_LY25:
   active: true
   history:
@@ -55,7 +70,15 @@ YAG20um:
     02 Jun 2022 12:01:14: '   65.3613'
     14 Dec 2021 08:52:27: '   65.3613'
     19 Jan 2022 16:02:16: '   65.3613'
-  value: 65.361328125
+    23 Aug 2023 04:32:07: '   68.5414'
+  value: 68.54138671875
+YAG20um_2:
+  active: true
+  history:
+    11 Aug 2023 18:35:12: '   68.5389'
+    28 Jul 2023 22:41:03: '   65.5566'
+    28 Jul 2023 22:59:54: '   69.5483'
+  value: 68.5389453125
 YAG20um_CCM:
   active: true
   history:
@@ -71,6 +94,11 @@ miniLuAG20um:
   history:
     19 Jan 2022 16:11:52: '   34.3213'
   value: 34.3212890625
+out:
+  active: true
+  history:
+    24 Aug 2023 19:28:25: '  102.0204'
+  value: 102.020390625
 partial_LuAG:
   active: true
   history:

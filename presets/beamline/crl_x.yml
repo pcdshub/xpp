@@ -61,8 +61,29 @@ X10036_unfocused:
   history:
     17 Jul 2023 21:37:06: '  -10.0000'
   value: -10.0
+YAG:
+  active: true
+  history:
+    01 Sep 2023 21:01:01: '   -2.8115'
+  value: -2.8114941406250002
+focused:
+  active: true
+  history:
+    01 Sep 2023 21:37:05: '    5.2565'
+  value: 5.25650390625
+pack1_scintilator_test:
+  active: true
+  history:
+    18 Aug 2023 21:50:17: '   -0.0295'
+    18 Aug 2023 23:35:08: '   -0.0326'
+  value: -0.03256640625000018
 pack2:
   active: true
   history:
     11 Nov 2022 13:39:08: '   -0.2183'
   value: -0.2182724609375002
+pack3_ly21:
+  active: true
+  history:
+    24 Aug 2023 19:44:51: '    0.1904'
+  value: 0.1903583984374999
