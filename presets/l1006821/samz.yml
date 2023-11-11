@@ -1,0 +1,98 @@
+l10068_EO:
+  active: true
+  history:
+    12 Sep 2023 14:03:50: '    0.1600'
+  value: 0.1600000000000037
+l10068_YAG:
+  active: true
+  history:
+    12 Sep 2023 15:41:36: '    0.1100'
+    12 Sep 2023 23:14:53: '    0.1600'
+  value: 0.1600000000000037
+l10068_s1:
+  active: true
+  history:
+    11 Sep 2023 23:49:48: '   -0.0858'
+    12 Sep 2023 14:45:45: '   -1.4500'
+  value: -1.4499999999999957
+l10068_s1_42:
+  active: true
+  history:
+    12 Sep 2023 14:48:06: '   -1.4500'
+  value: -1.4499999999999957
+l10068_s1_80:
+  active: true
+  history:
+    12 Sep 2023 14:58:46: '    0.8000'
+  value: 0.8000000000000043
+l10068_s2_42:
+  active: true
+  history:
+    12 Sep 2023 14:48:29: '   -1.4500'
+  value: -1.4499999999999957
+l10068_s2_80:
+  active: true
+  history:
+    12 Sep 2023 14:59:43: '    0.8000'
+  value: 0.8000000000000043
+l10068_s3_80:
+  active: true
+  history:
+    12 Sep 2023 15:00:52: '    0.3600'
+  value: 0.36000000000000654
+l10068_s4_42:
+  active: true
+  history:
+    12 Sep 2023 14:52:00: '    1.3300'
+  value: 1.3300000000000054
+l10068_s6_42:
+  active: true
+  history:
+    12 Sep 2023 14:54:39: '    1.3300'
+  value: 1.3300000000000054
+shift3s1_63:
+  active: true
+  history:
+    15 Sep 2023 19:08:43: '    1.1100'
+    15 Sep 2023 21:50:42: '    1.4100'
+  value: 1.4100000000000037
+shift3s1_80:
+  active: true
+  history:
+    15 Sep 2023 19:18:30: '    0.2500'
+  value: 0.25
+shift3s1a_80:
+  active: true
+  history:
+    15 Sep 2023 19:20:21: '    0.2500'
+  value: 0.25
+shift3s1new_63:
+  active: true
+  history:
+    16 Sep 2023 22:36:02: '    1.5200'
+  value: 1.5200000000000031
+shift3s3_63:
+  active: true
+  history:
+    15 Sep 2023 19:11:50: '    1.0100'
+  value: 1.0100000000000051
+shift3s6_63:
+  active: true
+  history:
+    15 Sep 2023 18:59:18: '   -0.0400'
+  value: -0.03999999999999915
+shift3s7a_80:
+  active: true
+  history:
+    15 Sep 2023 19:24:51: '    1.2000'
+  value: 1.2000000000000028
+shift3s7b_80:
+  active: true
+  history:
+    15 Sep 2023 19:22:51: '    1.2000'
+  value: 1.2000000000000028
+shift4s3005:
+  active: true
+  history:
+    17 Sep 2023 00:10:50: '    1.0100'
+  value: 1.0100000000000051

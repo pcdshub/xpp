@@ -269,15 +269,20 @@ with safe_load('add crl motors'):
 
 class LIB_SmarAct(BaseInterface, Device):
     tab_component_names = True
-    mirr_x = Cpt(SmarAct, ':01:m1', kind='normal')
-    mirr_y = Cpt(SmarAct, ':01:m2', kind='normal')
-    mirr_dy = Cpt(SmarAct, ':01:m3', kind='normal')
-    mirr_dx = Cpt(SmarAct, ':01:m4', kind='normal')
+    #mirr_x = Cpt(SmarAct, ':01:m1', kind='normal')
+    #mirr_y = Cpt(SmarAct, ':01:m2', kind='normal')
+    #mirr_dy = Cpt(SmarAct, ':01:m3', kind='normal')
+    #mirr_dx = Cpt(SmarAct, ':01:m4', kind='normal')
     #mono_th = Cpt(SmarAct, ':01:m5', kind='normal')
-    pr_th = Cpt(SmarAct, ':01:m5', kind='normal')
-    pr_x = Cpt(SmarAct, ':01:m6', kind='normal')
-    pr_y = Cpt(SmarAct, ':01:m7', kind='normal')
-    las_rot = Cpt(SmarAct, ':01:m10', kind='normal')
+    #pr_th = Cpt(SmarAct, ':01:m5', kind='normal')
+    #pr_x = Cpt(SmarAct, ':01:m6', kind='normal')
+    #pr_y = Cpt(SmarAct, ':01:m7', kind='normal')
+    #las_rot = Cpt(SmarAct, ':01:m10', kind='normal')
+    cc1_x = Cpt(SmarAct, ':01:m5', kind='normal')
+    cc1_th = Cpt(SmarAct, ':01:m6', kind='normal')
+    cc2_th = Cpt(SmarAct, ':01:m7', kind='normal')
+    cc2_x = Cpt(SmarAct, ':01:m8', kind='normal')
+    diode_x = Cpt(SmarAct, ':01:m9', kind='normal')
 
 class lu():#lib unit
     tab_component_names = True
@@ -290,7 +295,6 @@ class lu():#lib unit
 with safe_load('add laser motor groups'):
     import numpy as np
     import json
-    import sys
     import time
     from pcdsdevices.usb_encoder import UsDigitalUsbEncoder
     from xpp.db import xpp_txt
@@ -991,4 +995,16 @@ with safe_load('Time tool target'):
 
 with safe_load('Liquid Jet'):
    from pcdsdevices.jet import BeckhoffJet
-   ljh = BeckhoffJet('XCS:LJH', name='ljh') 
+   ljh = BeckhoffJet('XCS:LJH', name='ljh')
+
+
+# ---------- NNXO ----------
+#with safe_load('NNXO'):
+if 1:
+    import sys
+    sys.path.append('/cds/group/pcds/pyps/apps/hutch-python/xpp/xpp')
+    from nnxo import Nnxo
+
+    nnxo = Nnxo(ax_names=['z1', 'z2', 'x2', 'th1', 'th2', 'th3', 'n1', 'n2'],
+                    ensemble_ip = "172.21.84.235")
+
