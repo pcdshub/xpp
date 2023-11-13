@@ -1,3 +1,13 @@
+L10091_diode:
+  active: true
+  history:
+    25 Jul 2023 12:28:01: '   34.5860'
+  value: 34.58600347340091
+L10091_yag:
+  active: true
+  history:
+    24 Jul 2023 16:53:39: '  -73.4140'
+  value: -73.41400034129636
 cch_test:
   active: true
   history:

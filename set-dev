@@ -9,7 +9,7 @@ if [ -z "$1" ]; then
 fi
 
 REPO="$1"
-PACKAGE=${2:-${MODULE}}
+PACKAGE=${2:-${REPO}}
 ORG=${3:-"pcdshub"}
 
 HERE=`dirname $(readlink -f $0)`
@@ -23,7 +23,8 @@ if [ ! -d "${REPO}" ]; then
   else
     git clone "git@github.com:${ORG}/${REPO}.git"
   fi
-  ln -s `readlink -f "${REPO}/${PACKAGE}"` "devpath/${PACKAGE}"
 fi
+
+ln -s `readlink -f "${REPO}/${PACKAGE}"` "devpath/${PACKAGE}"
 
 popd

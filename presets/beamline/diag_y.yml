@@ -1,0 +1,10 @@
+L10091_diode:
+  active: true
+  history:
+    25 Jul 2023 12:28:17: '   23.2146'
+  value: 23.21463966369629
+L10091_yag:
+  active: true
+  history:
+    24 Jul 2023 16:53:42: '   21.9780'
+  value: 21.977999687194824

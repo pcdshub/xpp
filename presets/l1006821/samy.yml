@@ -1,0 +1,98 @@
+l10068_EO:
+  active: true
+  history:
+    12 Sep 2023 14:03:58: '    1.0000'
+  value: 1.0
+l10068_YAG:
+  active: true
+  history:
+    12 Sep 2023 15:41:33: '   -2.0000'
+    12 Sep 2023 23:14:50: '   -2.0000'
+  value: -2.0
+l10068_s1:
+  active: true
+  history:
+    11 Sep 2023 23:49:44: '   -1.0323'
+    12 Sep 2023 14:45:48: '   -2.3000'
+  value: -2.3000000000000003
+l10068_s1_42:
+  active: true
+  history:
+    12 Sep 2023 14:48:02: '   -2.3000'
+  value: -2.3000000000000003
+l10068_s1_80:
+  active: true
+  history:
+    12 Sep 2023 14:58:42: '    1.0000'
+  value: 1.0
+l10068_s2_42:
+  active: true
+  history:
+    12 Sep 2023 14:48:26: '   -2.3000'
+  value: -2.3000000000000003
+l10068_s2_80:
+  active: true
+  history:
+    12 Sep 2023 14:59:39: '    1.0000'
+  value: 1.0
+l10068_s3_80:
+  active: true
+  history:
+    12 Sep 2023 15:00:48: '   -1.9000'
+  value: -1.9
+l10068_s4_42:
+  active: true
+  history:
+    12 Sep 2023 14:52:04: '    0.3000'
+  value: 0.29999999999999993
+l10068_s6_42:
+  active: true
+  history:
+    12 Sep 2023 14:54:20: '    0.3000'
+  value: 0.29999999999999993
+shift3s1_63:
+  active: true
+  history:
+    15 Sep 2023 19:08:38: '    0.8000'
+    15 Sep 2023 21:50:39: '    1.4000'
+  value: 1.4
+shift3s1_80:
+  active: true
+  history:
+    15 Sep 2023 19:18:26: '   -2.2000'
+  value: -2.2
+shift3s1a_80:
+  active: true
+  history:
+    15 Sep 2023 19:20:13: '   -2.2000'
+  value: -2.2
+shift3s1new_63:
+  active: true
+  history:
+    16 Sep 2023 22:36:10: '    1.8000'
+  value: 1.7999999999999998
+shift3s3_63:
+  active: true
+  history:
+    15 Sep 2023 19:11:57: '    0.8000'
+  value: 0.7999999999999999
+shift3s6_63:
+  active: true
+  history:
+    15 Sep 2023 18:59:14: '   -1.4000'
+  value: -1.4
+shift3s7a_80:
+  active: true
+  history:
+    15 Sep 2023 19:24:48: '    0.6000'
+  value: 0.5999999999999999
+shift3s7b_80:
+  active: true
+  history:
+    15 Sep 2023 19:22:55: '    0.6000'
+  value: 0.5999999999999999
+shift4s3005:
+  active: true
+  history:
+    17 Sep 2023 00:10:56: '    0.8000'
+  value: 0.7999999999999999

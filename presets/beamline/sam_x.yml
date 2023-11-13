@@ -1,25 +1,94 @@
 LX92_direct_beam:
-  active: true
+  active: false
   history:
     11 Dec 2022 09:08:02: '  -43.5407'
   value: -43.54072265625
 LX92_geom1_silica:
-  active: true
+  active: false
   history:
     11 Dec 2022 14:17:59: '   30.7747'
   value: 30.774726562500007
 LX92_geom1_zyla:
-  active: true
+  active: false
   history:
     11 Dec 2022 14:16:18: '  -25.9400'
   value: -25.939999999999994
 LX92_geom2_zyla:
-  active: true
+  active: false
   history:
     12 Dec 2022 08:04:34: '  -31.0000'
   value: -30.999999999999996
 LX92_silica:
-  active: true
+  active: false
   history:
     11 Dec 2022 10:07:53: '   15.4593'
   value: 15.459277343750006
+YAG:
+  active: false
+  history:
+    24 Sep 2023 16:54:30: '  -10.2003'
+  value: -10.2003
+YAG20:
+  active: true
+  history:
+    30 Oct 2023 13:37:31: '    4.9750'
+  value: 4.975
+air:
+  active: true
+  history:
+    24 Oct 2023 11:52:01: '   -7.0000'
+  value: -7.0
+cell_yag:
+  active: true
+  history:
+    15 Oct 2023 08:50:37: '   22.8000'
+  value: 22.8
+diamond:
+  active: true
+  history:
+    15 Oct 2023 06:59:45: '  -10.2003'
+  value: -10.2003
+sample:
+  active: true
+  history:
+    03 Nov 2023 08:56:13: '    2.3785'
+    03 Nov 2023 13:12:10: '    3.3000'
+    03 Nov 2023 15:34:36: '    2.3300'
+    05 Nov 2023 08:40:11: '    2.5600'
+    05 Nov 2023 15:06:18: '    2.5600'
+    05 Nov 2023 18:09:08: '    2.5320'
+    14 Oct 2023 16:20:36: '   39.0000'
+    27 Oct 2023 04:20:39: '   39.3500'
+    30 Oct 2023 14:45:52: '   -2.6000'
+    31 Oct 2023 12:10:59: '   -2.2000'
+  value: 2.5319921874999998
+static:
+  active: true
+  history:
+    25 Oct 2023 15:21:21: '  -19.0000'
+    27 Oct 2023 04:20:31: '   39.3500'
+    27 Oct 2023 04:20:50: '  -18.8000'
+    27 Oct 2023 15:15:25: '  -18.7600'
+  value: -18.76
+yag:
+  active: true
+  history:
+    03 Nov 2023 15:37:30: '   12.0000'
+    04 Nov 2023 09:37:01: '   10.0000'
+    05 Nov 2023 11:37:27: '   10.0000'
+    14 Oct 2023 09:03:55: '   22.8000'
+    29 Sep 2023 09:23:20: '   14.6200'
+    29 Sep 2023 11:44:16: '  -35.0000'
+    29 Sep 2023 13:26:39: '  -35.2003'
+  value: 10.0
+yag20:
+  active: true
+  history:
+    24 Oct 2023 09:23:42: '    8.0000'
+    30 Oct 2023 13:48:22: '    5.8000'
+  value: 5.8
+yag200:
+  active: true
+  history:
+    24 Oct 2023 09:27:02: '   23.0000'
+  value: 23.0

@@ -1,15 +1,15 @@
 YAG_sample:
-  active: true
+  active: false
   history:
     31 Oct 2022 11:17:46: '    2.3800'
   value: 2.3800000000000003
 YAG_sample2:
-  active: true
+  active: false
   history:
     31 Oct 2022 11:55:42: '    2.3950'
   value: 2.395
 sample:
-  active: true
+  active: false
   history:
     31 Oct 2022 13:44:07: '    2.3950'
     31 Oct 2022 14:21:18: '    2.4590'

@@ -1,0 +1,99 @@
+l10068_EO:
+  active: true
+  history:
+    12 Sep 2023 14:03:54: '    5.7000'
+  value: 5.699999999999999
+l10068_YAG:
+  active: true
+  history:
+    12 Sep 2023 15:40:54: '    5.7000'
+    12 Sep 2023 15:41:30: '    5.4000'
+    12 Sep 2023 23:14:46: '    6.2500'
+  value: 6.25
+l10068_s1:
+  active: true
+  history:
+    11 Sep 2023 23:49:40: '   -8.7034'
+    12 Sep 2023 14:45:52: '   -5.7000'
+  value: -5.699999999999999
+l10068_s1_42:
+  active: true
+  history:
+    12 Sep 2023 14:47:59: '   -5.7000'
+  value: -5.699999999999999
+l10068_s1_80:
+  active: true
+  history:
+    12 Sep 2023 14:58:37: '    1.1000'
+  value: 1.1000000000000014
+l10068_s2_42:
+  active: true
+  history:
+    12 Sep 2023 14:48:19: '   -8.0000'
+  value: -8.000000000000004
+l10068_s2_80:
+  active: true
+  history:
+    12 Sep 2023 14:59:36: '   -2.0000'
+  value: -2.0
+l10068_s3_80:
+  active: true
+  history:
+    12 Sep 2023 15:00:44: '   -0.7000'
+  value: -0.6999999999999993
+l10068_s4_42:
+  active: true
+  history:
+    12 Sep 2023 14:52:09: '   -7.7000'
+  value: -7.699999999999999
+l10068_s6_42:
+  active: true
+  history:
+    12 Sep 2023 14:54:15: '   -5.0000'
+  value: -5.0
+shift3s1_63:
+  active: true
+  history:
+    15 Sep 2023 19:08:32: '   -5.2000'
+    15 Sep 2023 21:50:36: '   -5.1000'
+  value: -5.100000000000001
+shift3s1_80:
+  active: true
+  history:
+    15 Sep 2023 19:18:21: '   -2.7000'
+  value: -2.6999999999999993
+shift3s1a_80:
+  active: true
+  history:
+    15 Sep 2023 19:20:02: '    0.3000'
+  value: 0.3000000000000007
+shift3s1new_63:
+  active: true
+  history:
+    16 Sep 2023 22:36:06: '   -9.4500'
+  value: -9.45
+shift3s3_63:
+  active: true
+  history:
+    15 Sep 2023 19:11:54: '   -9.7000'
+  value: -9.7
+shift3s6_63:
+  active: true
+  history:
+    15 Sep 2023 18:58:50: '   -5.4000'
+  value: -5.399999999999999
+shift3s7a_80:
+  active: true
+  history:
+    15 Sep 2023 19:24:44: '   -2.1000'
+  value: -2.1000000000000014
+shift3s7b_80:
+  active: true
+  history:
+    15 Sep 2023 19:22:58: '    0.3000'
+  value: 0.3000000000000007
+shift4s3005:
+  active: true
+  history:
+    17 Sep 2023 00:10:53: '   -9.7000'
+  value: -9.7

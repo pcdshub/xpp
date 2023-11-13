@@ -1,0 +1,16 @@
+YAG:
+  active: true
+  history:
+    29 Sep 2023 11:44:05: '   -0.4281'
+  value: -0.42810546875
+sample:
+  active: true
+  history:
+    31 Oct 2023 12:06:59: '   -1.7375'
+    31 Oct 2023 12:10:51: '   -1.5775'
+  value: -1.5775000000000001
+yag20:
+  active: true
+  history:
+    31 Oct 2023 12:14:40: '   -0.4500'
+  value: -0.45
