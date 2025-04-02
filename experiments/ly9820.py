@@ -374,8 +374,8 @@ class User:
         return
 
 
-    def continuous_ccmscan(self,energies, pointTime=1, move_vernier=True, bidirectional=False, kill=True):
-    #Set to go up an down once.
+    def continuous_ccmscan(self, energies, pointTime=1, move_vernier=True, bidirectional=False, kill=True):
+        #Set to go up an down once.
         initial_energy=ccm.E_Vernier.position
         try:
             for E in energies:

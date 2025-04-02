@@ -1,0 +1,25 @@
+h_pol:
+  active: true
+  history:
+    15 Oct 2024 21:35:27: '   15.0000'
+  value: 15.000005999999999
+hol_pol:
+  active: true
+  history:
+    23 Mar 2024 21:11:18: '    0.0000'
+  value: 5.999999999950489e-06
+hor_pol:
+  active: true
+  history:
+    23 Mar 2024 21:11:35: '    0.0000'
+  value: 1.999999999946489e-06
+out:
+  active: true
+  history:
+    23 Mar 2024 21:12:12: '   -5.0000'
+  value: -5.000001999999999
+v_pol:
+  active: true
+  history:
+    15 Oct 2024 09:30:45: '   15.0000'
+  value: 15.0

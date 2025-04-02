@@ -1,16 +1,26 @@
+in:
+  active: true
+  history:
+    15 Jun 2024 21:42:08: '   -2.5900'
+  value: -2.5899902343750014
+jet_jet:
+  active: true
+  history:
+    17 Oct 2024 03:11:42: '   -1.3600'
+  value: -1.3599999999999999
+jet_silica:
+  active: true
+  history:
+    16 Oct 2024 23:33:28: '   -1.9600'
+    18 Oct 2024 23:21:37: '   -2.4600'
+  value: -2.46
 sample:
   active: true
   history:
-    03 Nov 2023 08:56:15: '   -2.2000'
-    30 Oct 2023 14:45:58: '   -2.1000'
-  value: -2.2
-static:
+    13 Jun 2024 23:35:00: '    0.4100'
+  value: 0.4099853515625007
+zyla:
   active: true
   history:
-    25 Oct 2023 15:21:35: '   -0.2000'
-  value: -0.2
-yag20:
-  active: true
-  history:
-    30 Oct 2023 13:48:37: '   -0.7000'
-  value: -0.7000000000000001
+    14 Jun 2024 01:58:46: '   -0.2802'
+  value: -0.2802246093750007

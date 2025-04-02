@@ -1,0 +1,11 @@
+citius:
+  active: true
+  history:
+    17 Oct 2024 04:02:26: '  -30.0000'
+    26 Oct 2024 16:56:48: '  -34.0000'
+  value: -34.0
+jet_silica:
+  active: true
+  history:
+    18 Oct 2024 23:22:06: '   30.0000'
+  value: 30.0

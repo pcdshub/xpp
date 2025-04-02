@@ -5,11 +5,15 @@ from ophyd.signal import AttributeSignal, Signal
 import pcdsdevices.device_types
 from pcdsdevices.inout import InOutPositioner
 from subprocess import check_output
+from pcdsdevices.lasers.shutters import LaserShutter
 
 
 import time
 
 
+cp = LaserShutter('XPP:USR:ao1:15', name='cp')
+lp = LaserShutter('XPP:USR:ao1:14', name='lp')
+ep = LaserShutter('XPP:USR:ao1:13', name='ep') 
 
 class ShutterSequencerDoublePump():
     """ Class to control double pump shutters and set according sequences 

@@ -1,0 +1,19 @@
+be_in:
+  active: true
+  history:
+    01 Nov 2024 00:10:15: '    0.0156'
+    01 Nov 2024 00:19:25: '    7.0000'
+    01 Nov 2024 00:20:39: '    0.0000'
+    30 Oct 2024 18:50:26: '  -11.5000'
+  value: 0.0
+be_out:
+  active: true
+  history:
+    01 Nov 2024 00:12:23: '    7.0000'
+    30 Oct 2024 18:51:07: '   -1.0000'
+  value: 7.0
+out:
+  active: true
+  history:
+    31 Oct 2024 07:43:21: '    8.0000'
+  value: 8.0

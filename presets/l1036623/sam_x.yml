@@ -1,0 +1,15 @@
+top_left:
+  active: true
+  history:
+    17 Sep 2024 00:48:18: '  -18.0000'
+  value: -18.0
+wire:
+  active: true
+  history:
+    15 Sep 2024 17:48:22: '   76.9729'
+  value: 76.972890625
+yag:
+  active: true
+  history:
+    15 Sep 2024 11:45:34: '   64.0008'
+  value: 64.0008203125

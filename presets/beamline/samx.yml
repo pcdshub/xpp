@@ -1,0 +1,12 @@
+sample:
+  active: true
+  history:
+    03 Jun 2024 06:58:46: '  -10.4000'
+    31 May 2024 15:50:04: '   -1.0000'
+  value: -10.4
+yag:
+  active: true
+  history:
+    18 May 2024 09:38:46: '  -33.3000'
+    31 May 2024 15:15:03: '    9.0000'
+  value: 9.0

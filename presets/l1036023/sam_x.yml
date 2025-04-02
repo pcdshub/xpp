@@ -1,0 +1,17 @@
+hole:
+  active: true
+  history:
+    01 Nov 2024 10:52:47: '   -0.8130'
+    01 Nov 2024 12:26:39: '   -0.5980'
+    01 Nov 2024 16:56:39: '   -0.5927'
+  value: -0.5926806640624989
+micron:
+  active: true
+  history:
+    02 Nov 2024 19:37:03: '   -1.9243'
+  value: -1.9242529296874977
+white:
+  active: true
+  history:
+    01 Nov 2024 12:07:44: '    6.7020'
+  value: 6.702011718750015

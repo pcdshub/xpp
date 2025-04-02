@@ -27,7 +27,7 @@ with safe_load('Event Sequencers'):
 # K monochromator in the FEE
 with safe_load('K mono'):
     kmono_th = BeckhoffAxis('SP1L0:KMONO:MMS:XTAL_ANGLE', name='kmono_th')
-    kmono_y = BeckhoffAxis('SP1L0:KMONO:MMS:XTAL_VERT.RBV', name='kmono_y')
+    kmono_y = BeckhoffAxis('SP1L0:KMONO:MMS:XTAL_VERT', name='kmono_y')
 
 with safe_load('fake_delay'):
     fake_delay = FakeDelay('', '',name='fake_delay')
@@ -94,7 +94,7 @@ with safe_load('gon and kappa'):
         y = xpp_gon.xyz.y
         z = xpp_gon.xyz.z
         sam_z = xpp_gon_sam.sam_z
-        sam_phi = xpp_gon_sam.sam_phi	
+        sam_phi = xpp_gon_sam.sam_phi
 #    class kappa():
 #        eta=xpp_gon_kappa.eta
 #        kappa=xpp_gon_kappa.kappa
@@ -118,7 +118,7 @@ with safe_load('Roving Spectrometer'):
 
 
 with safe_load('Noplot ascan'):
-    from xpp.db import RE, daq, bp    
+    from xpp.db import RE, daq, bp
     def run_ascan_daq_noplot(mot, a, b, points, events_per_point, use_l3t=False):
         if RE.state != 'idle':
             RE.abort()
@@ -174,7 +174,7 @@ with safe_load('FS11 & FS14 lxt & lxt_ttc'):
     lxt_FS11 = LaserTiming('LAS:FS11', name='lxt')
     lxt_FS14 = LaserTiming('LAS:FS14', name='lxt')
     xpp_txt.name = 'txt'
-    
+
     # pick which is the default
     lxt = lxt_FS11
     #lxt = lxt_FS14
@@ -187,10 +187,10 @@ with safe_load('FS11 & FS14 lxt & lxt_ttc'):
         scales = {'txt': -1}
         warn_deadband = 5e-14
         fix_sync_keep_still = 'lxt'
-        sync_limits = (-10e-6, 10e-6)
+        sync_limits = (-50e-6, 50e-6)
 
     lxt_ttc = LXTTTC('', name='lxt_ttc')
-    
+
 
 
 # delay scan related scan plans and USB encoder object
@@ -199,7 +199,7 @@ with safe_load('Delay Scan'):
     from pcdsdevices.interface import BaseInterface
     from ophyd.device import Device
     from ophyd.signal import EpicsSignal
-     
+
 
 #Laser setup: standard XPP shutters.
 with safe_load('Laser Shutters - cp, lp & ep'):
@@ -266,6 +266,18 @@ with safe_load('add crl motors'):
         y = IMS('XPP:SB2:MMS:14', name='crl_y')
         z = IMS('XPP:SB2:MMS:15', name='crl_z')
 
+with safe_load('add low-T'):
+    class lowT():
+        sam_x = IMS('XPP:USR:MMS:18', name="sam_x")
+        sam_y = IMS('XPP:USR:MMS:25', name="sam_y")
+        sam_z = IMS('XPP:USR:MMS:24', name="sam_z")
+        swivel_x = IMS('XPP:USR:MMS:19', name="swivel_x")
+        swivel_z = IMS('XPP:USR:MMS:20', name="swivel_z")
+        sam_th = IMS('XPP:USR:MMS:17', name="sam_th")
+        #x = IMS('XPP::MMS:13', name='crl_x')
+        #y = IMS('XPP:SB2:MMS:14', name='crl_y')
+        #z = IMS('XPP:SB2:MMS:15', name='crl_z')
+
 
 class LIB_SmarAct(BaseInterface, Device):
     tab_component_names = True
@@ -278,19 +290,74 @@ class LIB_SmarAct(BaseInterface, Device):
     #pr_x = Cpt(SmarAct, ':01:m6', kind='normal')
     #pr_y = Cpt(SmarAct, ':01:m7', kind='normal')
     #las_rot = Cpt(SmarAct, ':01:m10', kind='normal')
-    cc1_x = Cpt(SmarAct, ':01:m5', kind='normal')
-    cc1_th = Cpt(SmarAct, ':01:m6', kind='normal')
-    cc2_th = Cpt(SmarAct, ':01:m7', kind='normal')
-    cc2_x = Cpt(SmarAct, ':01:m8', kind='normal')
-    diode_x = Cpt(SmarAct, ':01:m9', kind='normal')
+    lib_mirror_v = Cpt(SmarAct, ':01:m5', kind='normal')
+    pr_h = Cpt(SmarAct, ':01:m7', kind='normal')
+    pr_th = Cpt(SmarAct, ':01:m9', kind='normal')
+    pr_v = Cpt(SmarAct, ':01:m8', kind='normal')
+    mono1_th = Cpt(SmarAct, ':01:m6', kind='normal')
+    crl_y = Cpt(SmarAct, ':01:m1', kind='normal')
+    lib_mirror_h = Cpt(SmarAct, ':01:m2', kind='normal')
+    sam_phi = Cpt(SmarAct, ':01:m10', kind='normal')
+    sam_y = Cpt(SmarAct, ':01:m11', kind='normal')
+    sam_x = Cpt(SmarAct, ':01:m1', kind='normal')
+    sam_z = Cpt(SmarAct, ':01:m12', kind='normal')
+  
+
+
 
 class lu():#lib unit
     tab_component_names = True
     with safe_load('LIB SmarAct'):
         lib = LIB_SmarAct('XPP:MCS2', name='lib_smaract')
+lmirror_y = lu.lib.lib_mirror_v
+lmirror_x = lu.lib.lib_mirror_h
+pr_v = lu.lib.pr_v
+pr_h = lu.lib.pr_h 
+mono1_th = lu.lib.mono1_th
+pr_th = lu.lib.pr_th
+sam_phi = lu.lib.sam_phi
+sam_y = lu.lib.sam_y
+sam_x = lu.lib.sam_x
+sam_z = lu.lib.sam_z
+
+with safe_load('AMI auto save'):
+    import shutil
+    import os
+    import time
+    import hutch_python.utils as hu
+
+    class amisv():
+        def expname():
+            current_exp = hu.get_current_experiment("xpp")
+            print(current_exp)
+            return current_exp
+
+        def amicfgsave(expname):
+            expfolder = "/cds/home/opr/xppopr/experiments/" + expname + "/"
+            latest = "AUTOSAVE_n1.ami"
+            seclatest = "AUTOSAVE_n2.ami"
+            thirdlatest = "AUTOSAVE_n3.ami"
+            #if (os.path.isfile(expfolder+latest) == False):
+            try:
+                shutil.copyfile(expfolder + seclatest,expfolder + thirdlatest)
+                shutil.copyfile(expfolder + latest,expfolder + seclatest)
+                shutil.copyfile(expfolder+"AUTOSAVE.ami",expfolder+latest)
+            except:
+                try:
+                    shutil.copyfile(expfolder + latest,expfolder + seclatest)
+                    shutil.copyfile(expfolder+"AUTOSAVE.ami",expfolder+latest)
+                except:
+                    shutil.copyfile(expfolder+"AUTOSAVE.ami",expfolder+latest)
+
+        def autoamicfgsave():
+             expname = amisv.expname()
+             while(1):
+                 amisv.amicfgsave(expname)
+                 time.sleep(1800)
+                 print("Auto AMI file save ongoing")
 
 
-    
+
 
 with safe_load('add laser motor groups'):
     import numpy as np
@@ -302,7 +369,6 @@ with safe_load('add laser motor groups'):
     from xpp.db import xpp_lens_h, xpp_lens_v, xpp_lens_f
     #from xpp.db import xpp_pol_wp as pol_wp # disconnected
     from xpp.db import xpp_com_wp, xpp_opa_wp
-
     class las():
         com_wp = xpp_com_wp # waveplate for the main compressor
         #pol_wp=pol_wp # disconnected, used to be the other waveplate
@@ -315,7 +381,18 @@ with safe_load('add laser motor groups'):
         lens_f = xpp_lens_f # main pump beam lens travel along the beam
         delayFast1 = Newport('XPP:LAS:MMN:02', name='delayFast1')
         delayFast2 = Newport('XPP:LAS:MMN:01', name='delayFast2')
-         
+
+        def cont_scan(start,end,sweeptime):
+            #import elog
+            msg = "{}".format("start position: " + str(start) + "end position: "+ str(end) + "scan speed: " + str(sweeptime))
+            #elog.post(msg)
+            scanlength = np.abs(start-end)*299792458e+3/2 #conversion to mm
+            stagevelo = scanlength/sweeptime
+            las.delayFast1.velocity.put(stagevelo)
+            while(1):
+                las.lxt_fast1.umv(start)
+                las.lxt_fast1.umv(end)
+
         # Time tool motors
         with safe_load('add tt motors'):
             tt_comp = Newport('XPP:LAS:MMN:12', name='tt_comp') # compressor for time tool
@@ -334,7 +411,7 @@ with safe_load('add laser motor groups'):
         with safe_load('Fast delay encoders'):
             lxt_fast1_enc = UsDigitalUsbEncoder('XPP:GON:USDUSB4:01:CH0', name='lxt_fast_enc1', linked_axis=xpp_lxt_fast1)
             lxt_fast2_enc = UsDigitalUsbEncoder('XPP:GON:USDUSB4:01:CH1', name='lxt_fast_enc2', linked_axis=xpp_lxt_fast2)
-        
+
         # timing virtual motors for x-ray laser delay adjustment
         lxt = lxt
         txt = xpp_txt
@@ -342,15 +419,20 @@ with safe_load('add laser motor groups'):
         lxt_fast1 = xpp_lxt_fast1
         lxt_fast2 = xpp_lxt_fast2
 
+        with safe_load("Timetool Feedback Scripts"):
+            import xpp.timetool as tt_fbk
+
         def tt_rough_FB(
-            ttamp_th = 0.02, 
-            ipm2_th = 2000, 
-            ttfwhmhigh = 220,
+            ttamp_th_low = 0.02,
+            ttamp_th_high = 0.07,
+            ipm2_th = 2000,
+            ttfwhmhigh = 350,
             ttfwhmlow = 100,
             kp = 0.2,
             ki = 0.1,
             kd = 1
         ): #ttamp:timetool signal amplitude threshold, imp2 I0 value threshold, tt_window signal width
+            ttall = EpicsSignal('XPP:TT:01:TTALL')
             fbvalue = 0 # for drift record
             ave_tt = np.zeros([2,])
             while(las.get_matlabPV_stat() == 0):
@@ -361,14 +443,14 @@ with safe_load('add laser motor groups'):
                 dlen = 0#number of "good shots" for feedback
                 pt = 0#time to get the good singal for PI"D"
                 while(dlen < 121):
-                    current_tt, ttamp, ipm2val, ttfwhm, ttintg = las.get_ttall()
+                    current_tt, ttamp, ipm2val, ttfwhm, ttintg = las.get_ttall(ttall)
                     if(dlen%60 == 0):
                         #print("tt_value",current_tt,"ttamp",ttamp,"ipm2",ipm2val, dlen)
                         print("tt_value:%0.3f" %current_tt + "   ttamp:%0.3f " %ttamp +"   ipm2:%d" %ipm2val,"   good shot: %d" %dlen)
-                    if (ttamp > ttamp_th)and(ipm2val > ipm2_th)and(ttfwhm < ttfwhmhigh)and(ttfwhm >  ttfwhmlow)and(current_tt != tenshots_tt[-1,])and(las.txt.moving == False):# for filtering the last one is for when DAQ is stopping
+                    if (ttamp < ttamp_th_high)and(ttamp > ttamp_th_low)and(ipm2val > ipm2_th)and(ttfwhm < ttfwhmhigh)and(ttfwhm >  ttfwhmlow)and(current_tt != tenshots_tt[-1,])and(las.txt.moving == False):# for filtering the last one is for when DAQ is stopping
                         tenshots_tt = np.insert(tenshots_tt,dlen,current_tt)
                         dlen = np.shape(tenshots_tt)[0]
-                    pt = pt + 1 
+                    pt = pt + 1
                     time.sleep(0.01)
                 tenshots_tt = np.delete(tenshots_tt,0)
                 ave_tt[1,] = ave_tt[0,]
@@ -382,23 +464,25 @@ with safe_load('add laser motor groups'):
                     #fbvalue = ave_tt + fbvalue# for record
                     #drift_log(str(fbvalue))# for record
             return
-        
+
         def pid_control(kp,ki,kd,ave_data,faketime):
             fd_value = kp*ave_data[0,] + ki*(np.sum(ave_data[:,]))+kd*((ave_data[1,]-ave_data[0,])/faketime)
             return fd_value
 
         def matlabPV_FB(feedbackvalue):#get and put timedelay signal
-            matPV = EpicsSignal('LAS:FS11:VIT:matlab:04')#for bay 1 laser
+            #matPV = EpicsSignal('LAS:FS11:VIT:matlab:04')#for bay 1 laser
             #matPV = EpicsSignal('LAS:FS14:VIT:matlab:04')#for bay 4 laser
+            matPV = EpicsSignal('LAS:FS11:VIT:DRIFT_CORRECT_VAL') # for bay1
+            #matPV = EpicsSignal('LAS:FS14:VIT:DRIFT_CORRECT_VAL') # for bay4
             org_matPV = matPV.get()#the matlab PV value before FB
             fbvalns = feedbackvalue * 1e+9#feedback value in ns
             fbinput = org_matPV + fbvalns#relative to absolute value
             matPV.put(fbinput)
             return
-        
-        def get_ttall():#get timetool related signal
+
+        def get_ttall(ttall: EpicsSignal):#get timetool related signal
             #ttall = EpicsSignal('XPP:TIMETOOL:TTALL') #old TT PV
-            ttall = EpicsSignal('XPP:TT:01:TTALL')
+            #ttall = EpicsSignal('XPP:TT:01:TTALL')
             ttdata = ttall.get()
             current_tt = ttdata[1,]
             ttamp = ttdata[2,]
@@ -411,23 +495,28 @@ with safe_load('add laser motor groups'):
             ipm2values = np.zeros([numshots,])
             ii = 0
             while (ii < numshots):
-                ttall = EpicsSignal('XPP:TT:01:EVENTBUILD.VALA')
+                #ttall = EpicsSignal('XPP:TT:01:EVENTBUILD.VALA')#please keep this one for the future update
+                ttall = EpicsSignal('XPP:TT:01:TTALL')
                 ttdata = ttall.get()
                 ttamp = ttdata[2,]
-                ipm2val = ttdata[1,]
+                #ipm2val = ttdata[1,]# for event builder
+                ipm2val = ttdata[3,]
                 ttfwhm = ttdata[5,]
-                ttintg = ttdata[11,]
+                #ttintg = ttdata[11,]## for event builder
+                ttintg = ttdata[6,]
                 if(ipm2val > 200): 
                     ttdataall[ii,] = ttintg
                     ipm2values[ii,] = ipm2val
                     ii = ii + 1
+                    #print(ttall,ttintg,ipm2val)
                 time.sleep(0.008)
             #print(ttdata,ipm2values)
-            ttipmcorr = np.corrcoef(ttdataall,ipm2values) 
+            ttipmcorr = np.corrcoef(ttdataall[~np.isnan(ttdataall)&~np.isnan(ipm2values)],ipm2values[~np.isnan(ttdataall)&~np.isnan(ipm2values)]) 
             return ttipmcorr[0,1]
         def get_matlabPV_stat():#get timetool related signal
-            mp_stat = EpicsSignal('LAS:FS11:VIT:TT_DRIFT_ENABLE')# for bay 1
-            #mp_stat = EpicsSignal('LAS:FS14:VIT:TT_DRIFT_ENABLE')
+            print('run las.get_matlabPV_stat')
+            #mp_stat = EpicsSignal('LAS:FS14:VIT:TT_DRIFT_ENABLE')# for bay 4
+            mp_stat = EpicsSignal('LAS:FS11:VIT:TT_DRIFT_ENABLE')
    
             mp_stat = mp_stat.get()
             return mp_stat
@@ -478,8 +567,8 @@ with safe_load('add laser motor groups'):
             elif(round(tttime.get(),1)!=round(tttact.get(),1) or (tttphase.get() != 1)):
                 return 0
 
-        def tt_recover_dev(scanrange = 5e-12,stepsize = -0.5e-12,direction = "p",testshot = 240):#For tt_signal recover in 10 ps ##old verstion
-            las.tt_y.umv(54.67)#LuAG to find tt signal
+        def tt_recover_v1(scanrange = 5e-12,stepsize = -0.5e-12,direction = "p",testshot = 240):#For tt_signal recover in 10 ps ##old verstion just 
+            #las.tt_y.umv(54.67)#LuAG to find tt signal
             originaldelay = lxt()
             if direction == "n":
                 print("Search tt signal from positive to negative")
@@ -496,7 +585,7 @@ with safe_load('add laser motor groups'):
                 ii = 0
                 for ii in range(testshot):
                     current_tt, ttamp, ipm2val, ttfwhm,ttintg = las.get_ttall()#get 240 shots to find timetool signal
-                    if (ttamp > 0.03)and(ttfwhm < 130)and(ttfwhm >  70)and(ttamp<2):
+                    if (ttamp > 0.03)and(ttfwhm < 230)and(ttfwhm >  70)and(ttamp<2):
                         ttdata[ii,] = ttamp
                     time.sleep(0.008)
                 print(ttdata)
@@ -504,7 +593,7 @@ with safe_load('add laser motor groups'):
                     print("Found timetool signal and set current lxt to 0")
                     print(f"we will reset the current {lxt()} position to 0")
                     lxt.set_current_position(0)
-                    las.tt_y.umv(67.1777)#Switch to YAG
+                    #las.tt_y.umv(67.1777)#Switch to YAG
                     print("Please run las.tt_rough_FB()")
                     ttfb = input("Turn on feedback? yes(y) or No 'any other' ")
                     if ((ttfb == "yes") or (ttfb == "y")):
@@ -921,18 +1010,18 @@ with safe_load('add laser motor groups'):
                         delayinput = delayinput/2
                         lxt.mvr(delayinput)
                         print(f"Timewindow: {delayinput}")
-                        
+
                         i = i + 1
                         prebs = False
                         inidirection = "n"
                         print(f"Number of iteration:{i}")
-                        
+
                     elif bs == True:
                         delayinput = abs(delayinput)
                         delayinput = delayinput/2
                         lxt.mvr(delayinput)
                         print(f"Timewindow: {delayinput}")
-                        
+
                         i = i + 1
                         prebs = True
                         inidirection = "p"
@@ -940,9 +1029,9 @@ with safe_load('add laser motor groups'):
                     while(las.timing_check() != 1):### waiting for the lxt motion compledted
                         time.sleep(0.1)
                 las.tt_recover(scanrange = 10e-12,stepsize = -0.5e-12,direction = inidirection,testshot = 360) 
-                
-                
-              
+
+
+
                 #print("Found timetool signal and set current lxt to 0")
                 #print(f"we will reset the current {lxt()} position to 0")
                 #lxt.set_current_position(0)
@@ -961,29 +1050,6 @@ with safe_load('add laser motor groups'):
 
 
 ##################################################################################################
-#with safe_load('create cryo scattering chamber object group'):
-    #class csc():
-        #th = IMS('XPP:USR:MMS:17', name='th')
-        #x = IMS('XPP:USR:MMS:18', name='x')
-        #y = IMS('XPP:USR:MMS:25', name='y')
-        #z = IMS('XPP:USR:MMS:24', name='z')
-        #rz = IMS('XPP:USR:MMS:20', name='rz')
-        #rx = IMS('XPP:USR:MMS:19', name='rx')
-        #pmx = IMS('XPP:USR:MMS:23', name='pmx')
-        #pmy = IMS('XPP:USR:MMS:22', name='pmy')
-        #pmz = IMS('XPP:USR:MMS:21', name='pmz')
-        #pmrot = SmarAct('XPP:MCS2:01:m10', name='pmrot')
-        #dx = PMC100('XPP:USR:MMC:05', name='dx')
-        #dy = PMC100('XPP:USR:MMC:06', name='dy')
-        #dz = PMC100('XPP:USR:MMC:04', name='dz')
-
-
-#from pcdsdevices.attenuator import FeeAtt
-#from pcdsdevices.attenuator import FEESolidAttenuator
-#with safe_load('fee attenuators alias'):
-#    fat1=FeeAtt()
-#    fat2=FEESolidAttenuator()
-
 with safe_load('enable scan table scientific notation'):
     from bluesky.callbacks.core import LiveTable
     LiveTable._FMT_MAP['number'] = 'g'
@@ -993,18 +1059,83 @@ with safe_load('Time tool target'):
     tt_x = IMS('XPP:SB2:MMS:30', name='tt_x')
     tt_y = IMS('XPP:SB2:MMS:31', name='tt_y')
 
-with safe_load('Liquid Jet'):
-   from pcdsdevices.jet import BeckhoffJet
-   ljh = BeckhoffJet('XCS:LJH', name='ljh')
+#with safe_load('Liquid Jet'):
+#   from pcdsdevices.jet import BeckhoffJet
+#   ljh = BeckhoffJet('XCS:LJH', name='ljh')
 
 
 # ---------- NNXO ----------
 #with safe_load('NNXO'):
-if 1:
-    import sys
-    sys.path.append('/cds/group/pcds/pyps/apps/hutch-python/xpp/xpp')
-    from nnxo import Nnxo
+#if 1:
+#    import sys
+#    sys.path.append('/cds/group/pcds/pyps/apps/hutch-python/xpp/xpp')
+#    from nnxo import Nnxo
+#
+#    nnxo = Nnxo(ax_names=['z2', 'z1', 'x2', 'th1', 'th2', 'th3', 'n1', 'n2'],
+#                   ensemble_ip = "172.21.84.215")
 
-    nnxo = Nnxo(ax_names=['z1', 'z2', 'x2', 'th1', 'th2', 'th3', 'n1', 'n2'],
-                    ensemble_ip = "172.21.84.235")
+
+
+# ---------- Mobile Diffractometer ----------
+with safe_load('HXR Diffractometer'):
+    from pcdsdevices.gon import HxrDiffractometer
+    diff = HxrDiffractometer('HXR:GON:MMS:', name='diffractometer')
+
+with safe_load('Robot'):
+    from pcdsdevices import staubli_robot
+    robot = staubli_robot.StaubliRobot('XPP:ROB', name='robot')
+
+with safe_load('Robot calculation'):
+    class Rob():
+        def __init__(self):
+            self.x = EpicsSignal('XPP:ROB:POS:X', name='robx')
+            self.y = EpicsSignal('XPP:ROB:POS:Y', name='robz')
+            self.z = EpicsSignal('XPP:ROB:POS:Z', name='robz')
+            self.rx = EpicsSignal('XPP:ROB:POS:RX', name='robrx')
+            self.ry = EpicsSignal('XPP:ROB:POS:RY', name='robrz')
+            self.rz = EpicsSignal('XPP:ROB:POS:RZ', name='robrz')
+            return
+    rob = Rob()
+
+    def rob_pixel_az_el(i, j, pix_size=0.075, origin=[0, 0, 100]):
+        # get robot position and angles, buidl matrices and vectors
+        x = rob.x.get()
+        y = rob.y.get()
+        z = rob.z.get()
+        xyz_rob = np.array([[x,y,z]]).T
+        origin = np.asarray([origin]).T
+        print(f"robot position: {xyz_rob.T}")
+        print(f"origin: {origin.T}\n")
+
+        aa = rob.rx.get()
+        ab = rob.ry.get()
+        ac = rob.rz.get()
+        Rx = np.array([ [1, 0, 0], [0, np.cos(aa), -np.sin(aa)], [0, np.sin(aa), np.cos(aa)] ])
+        Ry = np.array([ [np.cos(ab), 0, np.sin(ab)], [0, 1, 0], [-np.sin(ab), 0, np.cos(ab)] ])
+        Rz = np.array([ [np.cos(ac), -np.sin(ac), 0], [np.sin(ac), np.cos(ac), 0], [0, 0, 1]])
+
+        # pos_xyz: in the robot frame
+        pos_xyz = ( np.array([[-i, j, 0]]).T - origin ) * pix_size
+        pos_xyz = Rx @ Ry @ Rz @ pos_xyz + xyz_rob - origin / pix_size
+
+        print(f"pos_xyz: {pos_xyz.T}\n")
+
+        el = np.rad2deg( -np.arctan(pos_xyz[2] / pos_xyz[1]) )[0]
+        az = np.rad2deg( np.arctan(pos_xyz[0] / pos_xyz[1]) )[0]
+
+        # calculate 2-theta
+        u = np.cos(el) * np.sin(az)
+        v = np.sin(el)
+        tth  = np.arcsin( np.sqrt(u**2 + v**2) )
+        tth = np.rad2deg(tth)
+        print(f"2-theta = {tth}")
+        return az, el, tth
+
+
+
+
+
+
+
+
 

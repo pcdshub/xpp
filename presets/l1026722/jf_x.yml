@@ -1,0 +1,11 @@
+in:
+  active: true
+  history:
+    10 Apr 2024 14:25:34: '    0.0000'
+    13 Apr 2024 19:28:55: '   17.5000'
+  value: 17.5
+out:
+  active: true
+  history:
+    10 Apr 2024 14:25:16: '  -65.0000'
+  value: -65.0
