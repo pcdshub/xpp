@@ -1,0 +1,10 @@
+in:
+  active: true
+  history:
+    30 May 2024 17:08:54: '   10.0000'
+  value: 10.0
+out:
+  active: true
+  history:
+    31 May 2024 07:28:53: '    7.0000'
+  value: 7.0

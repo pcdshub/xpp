@@ -1,0 +1,11 @@
+direct_beam:
+  active: true
+  history:
+    01 Jul 2024 19:16:15: '   -5.0000'
+  value: -4.999995639750001
+h_mirror_in:
+  active: true
+  history:
+    01 Jul 2024 19:41:29: '   21.0000'
+    01 Jul 2024 20:53:32: '   21.0000'
+  value: 20.999995359

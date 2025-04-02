@@ -1,0 +1,10 @@
+sample_006:
+  active: true
+  history:
+    03 Feb 2024 06:34:50: '    0.1000'
+  value: 0.10000520833333275
+yag:
+  active: true
+  history:
+    03 Feb 2024 07:48:05: '   -0.9000'
+  value: -0.8999967447916614

@@ -427,7 +427,7 @@ class User():
         followerdelay=3.8e-5*1e9 # not needed here
         self.evr_pp.ns_delay.set(flipflopdelay) # evr channel needs to be defined
         pp.flipflop(wait=True)
-    
+
     def move_SD_in(self):
         self.g1pi.umv(30)
         self.t1x.umv(-4.8)

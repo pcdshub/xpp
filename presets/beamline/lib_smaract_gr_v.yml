@@ -1,0 +1,15 @@
+in:
+  active: true
+  history:
+    12 Apr 2024 17:55:35: '    0.0000'
+  value: 0
+out:
+  active: true
+  history:
+    12 Apr 2024 17:42:53: '  -15.0000'
+  value: -14.999996000000003
+yag:
+  active: true
+  history:
+    12 Apr 2024 17:55:42: '   10.0000'
+  value: 10

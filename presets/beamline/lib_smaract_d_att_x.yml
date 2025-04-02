@@ -1,0 +1,17 @@
+out:
+  active: true
+  history:
+    04 Apr 2024 23:24:26: '    0.0000'
+    23 Mar 2024 20:39:46: '  -15.0000'
+  value: 1.4e-05
+si500um:
+  active: true
+  history:
+    04 Apr 2024 23:23:17: '   17.3672'
+    23 Mar 2024 20:40:46: '   -0.0000'
+  value: 17.367193
+yag:
+  active: true
+  history:
+    23 Mar 2024 20:40:18: '  -10.0000'
+  value: -10.00002

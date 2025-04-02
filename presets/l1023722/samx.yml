@@ -1,0 +1,11 @@
+diode:
+  active: true
+  history:
+    31 May 2024 09:21:48: '  -34.5000'
+  value: -34.5
+sample:
+  active: true
+  history:
+    02 Jun 2024 07:45:51: '   -2.0000'
+    03 Jun 2024 06:18:04: '   -2.4000'
+  value: -2.4
